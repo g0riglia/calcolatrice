@@ -33,7 +33,12 @@ public class calcolatrice {
 		System.out.println("5 - Per eseguire una radice quadrata.");
 		System.out.println("6 - Per eseguire una percentuale.");
 		System.out.print("Scegli: ");
-		scelta = src.nextByte();
+		scelta = -1;
+		try { 
+			scelta = src.nextByte();
+		} catch (Exception e) {
+			System.out.println("Devi inserire un numero, non caratteri, simboli o parole/frasi.");
+		}
 		
 		//Creazione del menu
 		switch(scelta) {
@@ -51,7 +56,12 @@ public class calcolatrice {
 		    	for (byte j = 0; j < numeri.length; j++) {
 		    		risultato += numeri[j];
 		    	}
-		    	System.out.println("Il risultato è: " + risultato);
+		    	if (is_integer(risultato)) {
+		    		int risultato_int = (int) risultato;
+		    		System.out.println("Il risultato è: " + risultato_int);
+		    	} else {
+		    		System.out.println("Il risultato è: " + risultato);
+		    	}
 		    	break;
 		    	
 		    //1 - Sottrazione
@@ -67,7 +77,12 @@ public class calcolatrice {
 		    	for (byte j = 1; j < numeri2.length; j++) {
 		    		risultato -= numeri2[j];
 		    	}
-		    	System.out.println("Il risultato è: " + risultato);
+		    	if (is_integer(risultato)) {
+		    		int risultato_int = (int) risultato;
+		    		System.out.println("Il risultato è: " + risultato_int);
+		    	} else {
+		    		System.out.println("Il risultato è: " + risultato);
+		    	}
 		    	break;
 		    	
 		    //2 - Moltiplicazione
@@ -78,7 +93,7 @@ public class calcolatrice {
 		    	double[] numeri3 = new double[100];
 		    	for (byte i = 0; i < n; i++) {
 		    		System.out.print("Inserisci numero: ");
-		2    		numeri3[i] = src.nextDouble();
+		    		numeri3[i] = src.nextDouble();
 		    	}
 		    	for (byte j = 0; j < n; j++) {
 		    		risultato = risultato * numeri3[j];
@@ -110,8 +125,59 @@ public class calcolatrice {
 		    	} else {
 		    		System.out.println("Il risultato è: " + risultato);
 		    	}
-		    	
 		    	break;
+		    
+		    //4 - Potenza
+		    case 4:
+		    	System.out.print("Inserisci la base: ");
+		    	short base = src.nextShort();
+		    	System.out.print("Inserisci l'esponente: ");
+		    	byte esponente = src.nextByte();
+		    	risultato = Math.pow(base, esponente);
+		    	if (is_integer(risultato)) {
+		    		int risultato_int = (int) risultato;
+		    		System.out.println("Il risultato è: " + risultato_int);
+		    	} else {
+		    		System.out.println("Il risultato è: " + risultato);
+		    	}
+		    	break;
+		    	
+		    //5 - Radice quadrata
+		    case 5: 
+		    	System.out.print("Inserisci il radicando (numero sotto la radice): ");
+		    	short radicando = src.nextShort();
+		    	risultato = Math.sqrt(radicando);
+		    	if (is_integer(risultato)) {
+		    		int risultato_int = (int) risultato;
+		    		System.out.println("Il risultato è: " + risultato_int);
+		    	} else {
+		    		System.out.println("Il risultato è: " + risultato);
+		    	}
+		    	break;
+		    	
+		    //6 - Percentuale
+		    case 6:
+		    	System.out.print("Inserisci il numero: ");
+		    	double numeropercentuale = src.nextDouble();
+		    	System.out.print("Inserisci la percentuale che ne vuoi calcolare: ");
+		    	short percentuale = src.nextShort();
+		    	risultato = (numeropercentuale * percentuale) / 100;
+		    	if (is_integer(risultato)) {
+		    		int risultato_int = (int) risultato;
+		    		System.out.println("Il risultato è: " + risultato_int);
+		    	} else {
+		    		System.out.println("Il risultato è: " + risultato);
+		    	}
+		    	break;
+		    	
+		    //Default
+		    default:
+		    	System.out.println("Devi scegliere una tra quelle 6 opzioni.");
 		}
+		
+		//Fine del programma
+		System.out.println("Fine del programma.");
+		
+		//Nini :)
 	}
 }
