@@ -2,9 +2,18 @@ package scuola;
 
 import java.util.Scanner;
 import java.lang.Math;
-import java.util.Math;
 
 public class calcolatrice {
+	
+	static boolean is_integer(double num) {
+		int num1 = (int) num;
+		
+		if ((num - num1) == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	public static void main(String[] args) {
 		//Inizializzazione dello Scanner
@@ -69,12 +78,17 @@ public class calcolatrice {
 		    	double[] numeri3 = new double[100];
 		    	for (byte i = 0; i < n; i++) {
 		    		System.out.print("Inserisci numero: ");
-		    		numeri3[i] = src.nextDouble();
+		2    		numeri3[i] = src.nextDouble();
 		    	}
-		    	for (byte j = 0; j < numeri3.length; j++) {
+		    	for (byte j = 0; j < n; j++) {
 		    		risultato = risultato * numeri3[j];
 		    	}
-		    	System.out.println("Il risultato è: " + risultato);
+		    	if (is_integer(risultato)) {
+		    		int risultato_int = (int) risultato;
+		    		System.out.println("Il risultato è: " + risultato_int);
+		    	} else {
+		    		System.out.println("Il risultato è: " + risultato);
+		    	}
 		    	break;
 		    	
 		    //3 - Divisione
@@ -86,11 +100,17 @@ public class calcolatrice {
 		    		System.out.print("Inserisci numero: ");
 		    		numeri4[i] = src.nextDouble();
 		    	}
-		    	risultato = numeri4[0];
-		    	for (byte j = 1; j < numeri4.length; j++) {
+		    	risultato = numeri4[0];		//Il primo numero della divisione deve essere messo così
+		    	for (byte j = 1; j < n; j++) {
 		    		risultato = risultato / numeri4[j];
 		    	}
-		    	System.out.println("Il risultato è: " + risultato);
+		    	if (is_integer(risultato)) {
+		    		int risultato_int = (int) risultato;
+		    		System.out.println("Il risultato è: " + risultato_int);
+		    	} else {
+		    		System.out.println("Il risultato è: " + risultato);
+		    	}
+		    	
 		    	break;
 		}
 	}
