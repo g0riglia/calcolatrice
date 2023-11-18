@@ -53,7 +53,7 @@ public class calcolatrice {
 		    		System.out.print("Inserisci numero: ");
 		    		numeri[i] = src.nextDouble();
 		    	}
-		    	for (byte j = 0; j < numeri.length; j++) {
+		    	for (byte j = 0; j < n; j++) {
 		    		risultato += numeri[j];
 		    	}
 		    	if (is_integer(risultato)) {
@@ -74,7 +74,7 @@ public class calcolatrice {
 		    		numeri2[i] = src.nextDouble();
 		    	}
 		    	risultato = numeri2[0];    			//Questo serve a far funzionare la sottrazione
-		    	for (byte j = 1; j < numeri2.length; j++) {
+		    	for (byte j = 1; j < n; j++) {
 		    		risultato -= numeri2[j];
 		    	}
 		    	if (is_integer(risultato)) {
